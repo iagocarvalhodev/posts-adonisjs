@@ -34,6 +34,12 @@ class User extends Model {
   tokens () {
     return this.hasMany('App/Models/Token')
   }
+
+  // relacionamento os usuarios podem ter varios tweets
+
+  tweets () {
+    return this.hasMany('App/Models/Tweet');
+  }
 }
 
 module.exports = User
