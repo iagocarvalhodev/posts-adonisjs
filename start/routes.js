@@ -21,4 +21,9 @@ Route.post('/authenticate', 'AuthController.authenticate');
 
 
 // rotas com acesso somente autenticado
-Route.get('/app', 'AppController.index').middleware(["auth"]);
+
+
+Route.group(() => {
+  Route.get('/app', 'AppController.index');
+  Route.resource('tweets', 'TweetController').apiOnly().except("update");
+}).middleware('auth');
