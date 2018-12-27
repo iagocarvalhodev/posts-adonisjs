@@ -16,6 +16,9 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
-})
+Route.post('/register', 'AuthController.register');
+Route.post('/authenticate', 'AuthController.authenticate');
+
+
+// rotas com acesso somente autenticado
+Route.get('/app', 'AppController.index').middleware(["auth"]);
